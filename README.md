@@ -1,90 +1,127 @@
-
-# 🏡 Real Estate Data Engineering & Analytics Pipeline
-
+🏡 Real Estate Data Engineering & Analytics Pipeline
 This project is an end-to-end data engineering and analytics pipeline for the real estate sector. It simulates real-time property data streaming using Kafka, performs batch processing using PySpark, stores cleaned data in a cloud data warehouse (Snowflake), and visualizes insights through a Streamlit dashboard. The project is designed to demonstrate my skills across both data engineering and data analytics domains.
 
-## 📌 Project Architecture
+📌 Project Architecture
+Real-time data simulation via Kafka
 
-1. Real-time data simulation via Kafka
-2. Data ingestion and consumption using Kafka producer/consumer in Python
-3. ETL processing using PySpark
-4. Storage of cleaned data into Snowflake
-5. Business logic and modeling using dbt
-6. Data visualization and prediction using Streamlit
-7. Workflow orchestration using Apache Airflow
+Data ingestion using Kafka producer/consumer in Python
 
-## 🧠 Technologies Used
+ETL processing using PySpark
 
-| Stack         | Tool/Tech                         |
-|---------------|-----------------------------------|
-| Streaming     | Apache Kafka                      |
-| Processing    | PySpark                           |
-| Storage       | AWS S3 (or local as fallback)     |
-| Data Warehouse| Snowflake                         |
-| Orchestration | Apache Airflow                    |
-| Modeling      | dbt                               |
-| Visualization | Streamlit                         |
-| Programming   | Python, SQL                       |
+Storage of cleaned data in AWS S3 (using AWS CLI) for scalability and cloud integration
 
-## ✅ Project Timeline & Progress
+Cleaned data is loaded into Snowflake
 
-| Week | Focus Area                             | Status       |
-|------|----------------------------------------|--------------|
-| 1    | Kafka Setup + Real-time Data Ingestion | ✅ Completed |
-| 2    | PySpark ETL & Silver Layer             | ⏳ In Progress |
-| 3    | Snowflake Integration + dbt Modeling   | ❌ Not Started |
-| 4    | ML + EDA + Streamlit Dashboard         | ❌ Not Started |
-| 5    | Airflow DAG + Deployment               | ❌ Not Started |
+Business logic and transformation using dbt
 
-## 📦 Week 1 Summary – Real-time Data Ingestion with Kafka
+Data visualization and prediction using Streamlit
 
-- Simulated property listings using a Kafka Producer (Python)
-- Created Kafka Topic: real_estate_stream
-- Wrote Kafka Consumer to store data locally in JSON/CSV
-- Handled edge cases like malformed data and retry logic
-- Used sample datasets from Kaggle for simulation
+Workflow orchestration using Apache Airflow
 
-✅ Output: A stream of JSON-formatted real estate data flowing through Kafka to the local storage layer.
+🧠 Technologies Used
+Stack	Tool/Tech
+Streaming	Apache Kafka
+Processing	PySpark
+Storage	AWS S3 (via AWS CLI)
+Data Warehouse	Snowflake
+Orchestration	Apache Airflow
+Modeling	dbt
+Visualization	Streamlit
+Programming	Python, SQL
 
-## 📂 Folder Structure
+✅ Project Timeline & Progress
+Week	Focus Area	Status
+1	Kafka Setup + Real-time Ingestion	✅ Completed
+2	PySpark ETL & Silver Layer	✅ Completed
+3	Snowflake Integration + dbt Modeling	⏳ In Progress
+4	ML + EDA + Streamlit Dashboard	❌ Not Started
+5	Airflow DAG + Deployment	❌ Not Started
 
-\`\`\`bash
+📦 Week 1 Summary – Real-time Data Ingestion with Kafka
+Simulated property listings using a Kafka Producer (Python)
+
+Created Kafka Topic: real_estate_stream
+
+Wrote Kafka Consumer to store data locally in JSON/CSV
+
+Handled edge cases like malformed data and retry logic
+
+Used sample datasets from Kaggle for simulation
+
+✅ Output: A stream of JSON-formatted real estate data flowing through Kafka to local storage.
+
+🧹 Week 2 Summary – PySpark ETL & Silver Layer
+Set up PySpark environment
+
+Read Kafka consumer output (JSON/CSV)
+
+Cleaned and transformed data using PySpark
+
+Converted raw data into Parquet files (Silver Layer)
+
+Saved cleaned data to AWS S3 using AWS CLI
+
+Handled inconsistent pricing formats, nulls, and data types
+
+Data stored in organized, partitioned S3 directories
+
+✅ Output: Cleaned and structured Parquet files stored in AWS S3 (Silver Layer), ready for Snowflake.
+
+🧊 Week 3 – Load to Snowflake + SQL Modeling with dbt
+🎯 Goal:
+Push cleaned data to Snowflake
+
+Learn and build SQL models in dbt
+
+📚 Learn:
+Snowflake concepts: Warehouses, tables, stages
+
+dbt concepts: Models, seeds, sources, snapshots
+
+Writing modular SQL models for business metrics
+
+🛠️ Build:
+Create Snowflake tables and load transformed Parquet data
+
+Set up and initialize a dbt project
+
+Write models such as:
+
+avg_price_by_city
+
+top_5_areas_by_growth
+
+listings_by_property_type
+
+📂 Folder Structure
+go
+Copy
+Edit
 real-estate-data-pipeline/
-│
 ├── kafka_ingestion/
 │   ├── producer.py
 │   ├── consumer.py
 │   └── sample_data/
-│
 ├── spark_etl/
 │   └── spark_cleaning_job.py
-│
 ├── snowflake_dbt/
 │   ├── dbt_project/
 │   └── models/
-│
 ├── streamlit_dashboard/
 │   └── app.py
-│
 ├── airflow_dag/
 │   └── dag.py
-│
 └── README.md
-\`\`\`
+📸 Screenshots & Demo (Coming Soon – Week 4)
+Dashboard visuals and prediction interface will be added once Streamlit integration is completed.
 
-## 🚀 Upcoming Goals (Week 2)
+☁️ Cloud & CLI Integration
+AWS S3 is used as a central data lake for storing the Silver Layer output.
 
-- Set up PySpark environment
-- Transform Kafka output into cleaned Parquet files
-- Move to Silver layer (intermediate storage)
-- Begin writing transformation logic for later ML pipeline
+AWS CLI is configured for seamless upload of transformed files to S3 buckets.
 
-## 📸 Screenshots & Demo (to be added in Week 4)
+This setup ensures cloud scalability, portability, and ease of Snowflake integration for large-scale analytics.
 
-(Dashboard visuals and prediction UI will be shared here.)
-
-## 👨‍💻 Author
-
-- Rishabh Rawat – Data Engineering & Analytics Enthusiast  
-- GitHub: https://github.com/Rishabh1627rawat  
-- LinkedIn: (Add your profile here)
+👨‍💻 Author
+Rishabh Rawat – Data Engineering & Analytics Enthusiast
+📂 GitHub: github.com/Rishabh1627rawat
