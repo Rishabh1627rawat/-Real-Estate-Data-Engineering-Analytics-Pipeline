@@ -34,6 +34,8 @@ Build an **end-to-end data engineering pipeline** that:
 
 ---
 
+### 🔍 What Business Problems This Solves
+
 Problem | Solution |
 |--------|----------|
 | ❌ Price inconsistency across listings | ✅ PySpark cleaning & standardization |
@@ -41,6 +43,8 @@ Problem | Solution |
 | ❌ Manual reporting of average price or growth trends | ✅ Automated dbt models (avg_price_by_city, YoY growth) |
 | ❌ Unclear which city/area is booming | ✅ Insights through Streamlit dashboard |
 | ❌ Scattered & slow data processing | ✅ Automated Airflow pipeline + Snowflake speed 
+
+---
 
 ## 🧠 Technologies Used
 
