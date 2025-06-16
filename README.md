@@ -3,6 +3,24 @@
 This project is an end-to-end data engineering and analytics pipeline for the real estate sector. It simulates real-time property data streaming using Kafka, performs batch processing using PySpark, stores cleaned data in a cloud data warehouse (Snowflake), and visualizes insights through a Streamlit dashboard. The project is designed to demonstrate my skills across both data engineering and data analytics domains.
 
 ---
+📌 Problem Statement
+
+In the real estate industry, decision-makers—like home buyers, investors, and listing platforms—struggle to make informed decisions due to **fragmented, messy, and delayed data**.  
+
+Properties across cities show varying prices, trends, and demand. Without a centralized, automated pipeline to process and track this data, platforms cannot deliver **accurate price recommendations, trend forecasts, or inventory insights**.
+
+### 🎯 Goal
+
+Build an **end-to-end data engineering pipeline** that:
+
+- Ingests raw real estate data from multiple sources
+- Cleans, transforms, and models it using PySpark and dbt
+- Stores data in Snowflake for fast analytics
+- Visualizes trends through dashboards
+- Automates the entire process using Apache Airflow
+
+---
+
 
 ## 📌 Project Architecture
 
@@ -15,6 +33,14 @@ This project is an end-to-end data engineering and analytics pipeline for the re
 7. Workflow orchestration using Apache Airflow  
 
 ---
+
+Problem | Solution |
+|--------|----------|
+| ❌ Price inconsistency across listings | ✅ PySpark cleaning & standardization |
+| ❌ No tracking of historical price changes | ✅ dbt Snapshots + time-based models |
+| ❌ Manual reporting of average price or growth trends | ✅ Automated dbt models (avg_price_by_city, YoY growth) |
+| ❌ Unclear which city/area is booming | ✅ Insights through Streamlit dashboard |
+| ❌ Scattered & slow data processing | ✅ Automated Airflow pipeline + Snowflake speed 
 
 ## 🧠 Technologies Used
 
@@ -30,6 +56,39 @@ This project is an end-to-end data engineering and analytics pipeline for the re
 | Programming    | Python, SQL                       |
 
 ---
+
+
+
+
+### 📊 Core Features / Models
+
+- `avg_price_by_city.sql`: Average property prices grouped by city
+- `property_growth_rate.sql`: Year-over-Year growth in prices
+- `listing_price_history.sql`: Snapshots to track changes over time
+- `dim_city`, `dim_property_type`: Lookup dimensions
+- `fact_listings`: Clean, analyzable listing data
+
+---
+
+### 📈 Results / Benefits
+
+- 📍 Identify top-growing cities
+- 🏷 Recommend pricing strategies based on city/tier
+- 📉 Detect areas with falling trends
+- 📊 Enable faster reporting and insights generation
+- 🔁 Fully automated, low-maintenance pipeline
+
+---
+
+### 👨‍💼 Ideal Use Cases
+
+- Real Estate Platforms (e.g., 99acres, MagicBricks)
+- PropTech Startups
+- Real Estate Investors
+- Business Analysts in Housing Sector
+
+---
+
 
 ## ✅ Project Timeline & Progress
 
