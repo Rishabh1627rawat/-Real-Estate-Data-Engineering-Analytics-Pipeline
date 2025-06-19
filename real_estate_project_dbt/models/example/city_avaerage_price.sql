@@ -1,0 +1,16 @@
+{{ config(
+    database='REAL_ESTATE',
+    schema='LISTINGS',
+    materialized='view'
+) }}
+
+WITH avg_price AS (
+    SELECT
+        CLEAN_CITY_NAME AS CITY_NAME,
+        PROPERTY_TYPE AS PROPERTY_TYPE,
+        AVG(PRICE) AS TOTAL_PRICE
+    FROM REAL_ESTATE.LISTINGS.LISTINGS_CLEANED
+    GROUP BY CLEAN_CITY_NAME,PROPERTY_TYPE
+)
+
+SELECT * FROM avg_price
