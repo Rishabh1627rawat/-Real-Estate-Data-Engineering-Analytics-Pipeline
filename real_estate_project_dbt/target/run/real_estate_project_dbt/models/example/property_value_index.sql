@@ -1,0 +1,54 @@
+
+  create or replace   view REAL_ESTATE.LISTINGS_LISTINGS.property_value_index
+  
+   as (
+    
+
+WITH ranked AS (
+    SELECT
+        PROP_ID,
+        CLEAN_CITY_NAME,
+        PRICE,
+        AGE,
+        TOTAL_FLOOR,
+        BEDROOM_NUM,
+
+        -- Score calculations
+        PERCENT_RANK() OVER (PARTITION BY CLEAN_CITY_NAME ORDER BY PRICE) AS PRICE_SCORE,
+        PERCENT_RANK() OVER (PARTITION BY CLEAN_CITY_NAME ORDER BY TOTAL_FLOOR) AS FLOOR_SCORE,
+        PERCENT_RANK() OVER (PARTITION BY CLEAN_CITY_NAME ORDER BY BEDROOM_NUM) AS BEDROOM_SCORE,
+        1 - PERCENT_RANK() OVER (PARTITION BY CLEAN_CITY_NAME ORDER BY AGE) AS AGE_SCORE
+
+    FROM REAL_ESTATE.LISTINGS.LISTINGS_CLEANED
+),
+
+scored AS (
+    SELECT
+        *,
+        ROUND(
+            0.4 * PRICE_SCORE +
+            0.2 * AGE_SCORE +
+            0.2 * FLOOR_SCORE +
+            0.2 * BEDROOM_SCORE, 4
+        ) AS FINAL_VALUE_SCORE
+    FROM ranked
+),
+
+-- ✅ Only call NTILE(10) once and reuse it
+luxury_tagged AS (
+    SELECT
+        *,
+        NTILE(10) OVER (PARTITION BY CLEAN_CITY_NAME ORDER BY FINAL_VALUE_SCORE DESC) AS decile
+    FROM scored
+)
+
+SELECT
+    *,
+    CASE
+        WHEN decile = 1 THEN TRUE
+        ELSE FALSE
+    END AS IS_LUXURY
+FROM luxury_tagged
+ORDER BY CLEAN_CITY_NAME, FINAL_VALUE_SCORE DESC
+  );
+
