@@ -129,16 +129,25 @@ Problem | Solution |
 
 ---
 
-## 🧊 Week 3 Progress – Snowflake Integration & dbt Modeling
+## 🧊 Week 3 Summary – Snowflake + dbt + Airflow
 
-- Created Snowflake account, configured roles, and created warehouse  
-- Created external stage and file format for S3 data loading  
-- Testing data load using `COPY INTO` from AWS S3 to Snowflake table  
-- Initialized `dbt` project with connection to Snowflake  
-- Started creating base models in dbt (`stg_properties.sql`, `stg_location.sql`)  
-- Working on transformations for KPIs: average price, city-wise growth, etc.  
+- Created Snowflake warehouse, stage, and file format  
+- Loaded S3 data into Snowflake using `COPY INTO`  
+- Initialized and configured dbt project  
+- Built core dbt models and snapshots (facts/dims)  
+- Created DAG using Airflow to orchestrate PySpark → Snowflake → dbt  
+- ✅ Output: Fully automated ELT pipeline running via Airflow  
 
-⏳ **Current Focus**: Completing model logic and testing with sample dashboards.
+---
+
+## 🚀 Upcoming (Week 4)
+
+- Finalize ML model for price prediction (Optional)  
+- Build Streamlit dashboard for real-time trends  
+- Add filters, city-level insights, and charts  
+- Deploy demo with visual walkthrough  
+
+---
 
 ---
 
@@ -168,16 +177,7 @@ real-estate-data-pipeline/
 └── README.md
 ```
 
----
 
-## 🚀 Upcoming Goals (Week 4)
-
-- Finalize dbt models and test business KPIs  
-- Start ML model for price prediction  
-- Build interactive Streamlit dashboard with filters and charts  
-- Begin visual demo integration
-
----
 
 ## 📸 Screenshots & Demo (to be added in Week 4)
 
