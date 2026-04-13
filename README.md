@@ -2,8 +2,6 @@
 
 End-to-end data engineering pipeline for processing and analyzing real estate listing data using Kafka, Airflow, PySpark, Snowflake, and dbt.
 
----
-
 ## Overview
 
 In the real estate industry, property information is spread across multiple listing platforms such as 99acres, MagicBricks, and Housing.com. These platforms publish large volumes of listings containing details such as price, size, location, property type, amenities, and seller information. However, this data is often fragmented, inconsistent, and semi-structured.
@@ -57,3 +55,70 @@ Snowflake Data Warehouse
 dbt Models (Facts, Dimensions, Snapshots)
       ↓
 Analytics-ready datasets for reporting and analysis
+Technologies Used
+Category	Tools
+Orchestration	Apache Airflow
+Streaming / Ingestion	Apache Kafka
+Data Processing	PySpark
+Storage	AWS S3 / Local Storage
+Data Warehouse	Snowflake
+Data Modeling	dbt
+Languages	Python, SQL
+Core Features
+Data ingestion from real estate listing sources
+Workflow scheduling and orchestration using Airflow
+Kafka-based streaming simulation for ingestion
+Data cleaning and transformation using PySpark
+Structured storage in Snowflake
+Analytical data modeling using dbt
+Sample Analytical Use Cases
+
+The pipeline prepares data that can support analysis such as:
+
+Average price by city and property type
+Affordability comparisons across locations
+Historical price trends
+Identification of high-growth or declining markets
+How to Run
+Start Kafka
+zookeeper-server-start.sh config/zookeeper.properties
+kafka-server-start.sh config/server.properties
+Create Kafka Topic
+kafka-topics.sh --create --topic real_estate_stream --bootstrap-server localhost:9092
+Trigger the Airflow DAG
+airflow dags trigger real_estate_ingestion_dag
+Consume the Kafka Stream
+kafka-console-consumer.sh --topic real_estate_stream --bootstrap-server localhost:9092
+Folder Structure
+real-estate-data-pipeline/
+├── airflow/dags/
+├── kafka_ingestion/
+│   ├── producer.py
+│   └── consumer.py
+├── spark_etl/
+│   └── spark_cleaning_job.py
+├── snowflake_dbt/
+│   └── models/
+My Contribution
+
+In this project, I focused on the data engineering components of the pipeline, including:
+
+Building the ingestion workflow
+Working with Kafka for streaming-based data flow
+Developing PySpark transformations for cleaning and standardizing raw data
+Loading processed data into Snowflake
+Creating dbt models for structured analytics
+Future Enhancements
+Full orchestration across all pipeline stages using Airflow
+Spark Structured Streaming integration
+CI/CD-based deployment
+More advanced data quality checks and monitoring
+Author
+
+Rishabh Rawat
+Data Engineering | PySpark | Airflow | Cloud | Streaming | Analytics
+Jaipur, Rajasthan
+
+GitHub: Rishabh1627rawat
+
+LinkedIn: rishabh-rawat
